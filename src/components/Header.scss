@@ -1,0 +1,258 @@
+@import '../styles/variables';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100%;
+  z-index: 9998;
+  background-color: rgba($light-color, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: $transition-normal;
+  border-bottom: 1px solid rgba($primary-color, 0.1);
+  overflow: visible;
+
+  &--scrolled {
+    background-color: rgba($light-color, 0.98);
+    box-shadow: $shadow-light;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md 0;
+  width: 100%;
+  max-width: 100%;
+  min-height: 60px;
+
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    flex-shrink: 0;
+    
+    &-text {
+      font-family: $font-primary;
+      font-size: 2rem;
+      font-weight: 700;
+      color: $primary-color;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    
+    &-subtitle {
+      font-family: $font-accent;
+      font-size: 0.9rem;
+      color: $secondary-color;
+      text-align: center;
+      margin-top: -5px;
+      white-space: nowrap;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    list-style: none;
+    gap: $spacing-xl;
+    align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    margin-left: $spacing-xxl; // Adiciona espaço entre logo e menu
+
+    @media (max-width: $desktop) {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 300px;
+      height: 100vh;
+      background-color: $light-color;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 120px 20px 40px;
+      gap: $spacing-lg;
+      transition: right 0.3s ease-in-out;
+      box-shadow: $shadow-heavy;
+      flex-wrap: nowrap;
+      margin-left: 0; // Remove margin no mobile
+      z-index: 9999;
+      overflow-y: auto;
+      will-change: transform;
+
+      &--open {
+        right: 0;
+        display: flex !important;
+        visibility: visible !important;
+      }
+
+      li {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  &__link {
+    font-family: $font-secondary;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: $text-color;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius-sm;
+    transition: $transition-normal;
+    position: relative;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    @media (max-width: $desktop) {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: $spacing-md $spacing-lg;
+      font-size: 1.1rem;
+      border-bottom: 1px solid rgba($primary-color, 0.1);
+      border-radius: 0;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    &:hover {
+      color: $primary-color;
+      
+      @media (max-width: $desktop) {
+        background-color: rgba($primary-color, 0.05);
+      }
+    }
+
+    // Active page indicator
+    &.active {
+      color: $primary-color;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 2px;
+        background-color: $secondary-color;
+        border-radius: 1px;
+        
+        @media (max-width: $desktop) {
+          bottom: 0;
+          width: 60%;
+          height: 3px;
+        }
+      }
+    }
+
+    &--cta {
+      background-color: $secondary-color;
+      color: $dark-color;
+      padding: $spacing-md $spacing-lg;
+      border-radius: $border-radius-md;
+      font-weight: 700;
+      white-space: nowrap;
+
+      @media (max-width: $desktop) {
+        margin-top: $spacing-lg;
+        border-radius: $border-radius-md;
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+        transform: translateY(-2px);
+        box-shadow: $shadow-medium;
+        
+        @media (max-width: $desktop) {
+          transform: none;
+          background-color: darken($secondary-color, 15%);
+        }
+      }
+
+      // CTA button doesn't need active state underline
+      &.active::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: $desktop) {
+      font-size: 1.1rem;
+      padding: $spacing-md;
+      
+      &.active::after {
+        bottom: 0;
+        left: 0;
+        transform: none;
+        width: 4px;
+        height: 100%;
+        border-radius: 0 2px 2px 0;
+      }
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($dark-color, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 9998;
+    
+    @media (min-width: 1025px) {
+      display: none;
+    }
+  }
+
+  &__toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-sm;
+    z-index: 10000;
+    position: relative;
+
+    @media (max-width: $desktop) {
+      display: flex;
+    }
+
+    span {
+      width: 25px;
+      height: 3px;
+      background-color: $primary-color;
+      margin: 3px 0;
+      transition: $transition-fast;
+      border-radius: 2px;
+    }
+
+    &--open {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+      }
+
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+    }
+  }
+}

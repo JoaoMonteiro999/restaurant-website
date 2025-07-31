@@ -1,0 +1,231 @@
+@import '../styles/variables';
+
+.contact {
+  margin-top: 80px;
+  padding: 60px 20px;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 60px;
+
+    h1 {
+      font-size: 3rem;
+      color: $primary-color;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: $muted-color;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+  }
+
+  &__info {
+    background: linear-gradient(135deg, #f8f6f0 0%, #f5f3ed 100%);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(139, 69, 19, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+
+    h2 {
+      color: $primary-color;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    &-item {
+      margin-bottom: 35px;
+      padding: 25px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      h3 {
+        color: $secondary-color;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        font-weight: 600;
+
+        .icon {
+          margin-right: 12px;
+          font-size: 1.4rem;
+        }
+      }
+
+      p {
+        color: $muted-color;
+        line-height: 1.6;
+        margin: 0;
+        font-size: 1rem;
+
+        strong {
+          color: $text-color;
+        }
+      }
+    }
+
+    &-hours {
+      .hours-list {
+        p {
+          margin-bottom: 8px;
+          padding: 8px 0;
+          border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+
+          &:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &__map {
+    margin-top: 40px;
+    height: 220px;
+    background: linear-gradient(135deg, #f5f5dc 0%, #f0f0e6 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary-color;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: 2px dashed rgba(139, 69, 19, 0.3);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(135deg, #f0f0e6 0%, #ebebdc 100%);
+      border-color: rgba(139, 69, 19, 0.5);
+    }
+  }
+
+  &__form {
+    background: linear-gradient(135deg, #f8f6f0 0%, #f5f3ed 100%);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(139, 69, 19, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+
+    h2 {
+      color: $primary-color;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    form {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      }
+    }
+
+    &-group {
+      margin-bottom: 25px;
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: $primary-color;
+        font-size: 1rem;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 14px 16px;
+        border: 2px solid rgba(139, 69, 19, 0.3);
+        border-radius: 8px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background: white;
+        color: $text-color;
+
+        &:focus {
+          outline: none;
+          border-color: $secondary-color;
+          box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+          transform: translateY(-1px);
+        }
+
+        &::placeholder {
+          color: #999;
+        }
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 120px;
+        font-family: inherit;
+      }
+    }
+
+    &-submit {
+      width: 100%;
+      padding: 16px;
+      background: $primary-color;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+
+      &:hover {
+        background: #654321; // Darker brown for hover
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(139, 69, 19, 0.3);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
