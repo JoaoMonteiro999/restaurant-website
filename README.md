@@ -2,6 +2,8 @@
 
 A modern, elegant, and fully responsive restaurant website showcasing fine dining excellence. Built with React, TypeScript, and SCSS, this project demonstrates contemporary web development practices with a focus on user experience and visual appeal.
 
+https://github.com/user-attachments/assets/d09cc746-c758-4c49-bc26-03a12dbb149f
+
 ## 🌟 Features
 
 ### 🎨 Design & User Experience
